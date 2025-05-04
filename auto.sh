@@ -20,7 +20,7 @@ start_script() {
     sleep 5
 
     # Get IP via OpenVPN proxy
-    IP=$(curl --socks5 127.0.0.1:9050 --max-time 10 -s ipinfo.io/ip)
+    IP=$(curl --socks5 127.0.0.1:9050 --max-time 5 -s ipinfo.io/ip)
 
     if [[ -n "$IP" ]]; then
       echo "Proxy is working. IP: $IP"
@@ -37,7 +37,7 @@ start_script() {
           echo "WARP connected successfully."
 
           # Check if WARP proxy is working
-          WARP_IP=$(curl --socks5 127.0.0.1:8086 --max-time 10 -s ipinfo.io/ip)
+          WARP_IP=$(curl --socks5 127.0.0.1:8086 --max-time 5 -s ipinfo.io/ip)
 
           if [[ -n "$WARP_IP" ]]; then
             echo "WARP proxy is working. IP: $WARP_IP"
