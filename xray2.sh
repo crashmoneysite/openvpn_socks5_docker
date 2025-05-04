@@ -1,13 +1,3 @@
-#!/bin/bash
-
-# Step 1: Stop the firewall
-echo "[*] Stopping firewall..."
-sudo systemctl stop firewalld 2>/dev/null || sudo ufw disable 2>/dev/null
-
-# Step 2: Install Warp Proxy
-echo "[*] Installing Warp Proxy..."
-bash <(curl -sSL https://raw.githubusercontent.com/hamid-gh98/x-ui-scripts/main/install_warp_proxy.sh) -y
-
 # Step 3: Install Xray Core
 echo "[*] Installing Xray Core..."
 bash -c "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release.sh)" @ install
