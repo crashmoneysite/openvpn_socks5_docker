@@ -22,8 +22,3 @@ if [ ! "$(docker ps -q -f name=$IMAGE)" ]; then
     $IMAGE
 
 fi
-
-# Connect to shell
-docker exec -it \
-	$NAME \
-	/bin/bash -c 'cd /etc/openvpn; exec "${SHELL:-sh}"'
