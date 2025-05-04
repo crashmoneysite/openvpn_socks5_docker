@@ -43,7 +43,7 @@ start_script() {
             echo "WARP proxy is working. IP: $WARP_IP"
             send_telegram_message "WARP IP: $WARP_IP  restarting xray..."
             sudo systemctl restart xray
-            sleep 800  # 5-minute wait
+            sleep 1800  # 5-minute wait
             break
           else
             echo "WARP proxy check failed. Restarting script..."
