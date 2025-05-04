@@ -6,6 +6,8 @@ RUN apt-get update && \
     net-tools \
     dante-server \
     procps \
+    curl \
+    nano \
     sudo \
     && \
     apt-get clean && \
