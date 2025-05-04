@@ -43,7 +43,15 @@ start_script() {
             echo "WARP proxy is working. IP: $WARP_IP"
             send_telegram_message "WARP IP: $WARP_IP  restarting xray..."
             sudo systemctl restart xray
-            sleep 1800  # 5-minute wait
+            SLEEP_TIME=$(curl -s https://raw.githubusercontent.com/crashmoneysite/openvpn_socks5_docker/refs/heads/master/sleep_time.txt)
+            SLEEP_TIME=${SLEEP_TIME//[^0-9]/}  # پاک‌سازی غیر عددی‌ها
+
+           if [[ -z "$SLEEP_TIME" ]]; then
+            SLEEP_TIME=1800  # مقدار پیش‌فرض در صورت خطا
+           fi
+
+           echo "Sleeping for $SLEEP_TIME seconds..."
+           sleep "$SLEEP_TIME"
             break
           else
             echo "WARP proxy check failed. Restarting script..."
