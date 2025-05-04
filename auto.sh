@@ -7,8 +7,12 @@ API_URL="https://api.telegram.org/bot$BOT_TOKEN/sendMessage"
 
 send_telegram_message() {
   local message="$1"
-  curl -s -G "$API_URL" --data-urlencode "chat_id=$CHAT_ID" --data-urlencode "text=$message" > /dev/null
+  local hostname=$(hostname)
+  curl -s -G "$API_URL" \
+    --data-urlencode "chat_id=$CHAT_ID" \
+    --data-urlencode "text=$hostname: $message" > /dev/null
 }
+
 
 start_script() {
   while true; do
